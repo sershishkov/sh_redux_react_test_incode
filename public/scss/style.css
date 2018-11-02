@@ -1,0 +1,91 @@
+.client_container .client_item {
+  margin-top: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid grey;
+}
+
+.client_container .client_item .avatar {
+  padding: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.client_container .client_item .avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.client_container .client_item .info h5 {
+  font-size: 12px;
+}
+
+.client {
+  position: fixed;
+  top: 90px;
+}
+
+.client .client_avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.client .client_avatar .avatar_img img {
+  width: 128px;
+  height: 128px;
+}
+
+.client .client_avatar .client_base_info {
+  padding-left: 2px;
+}
+
+.client .client_avatar .client_base_info h1 {
+  color: aqua;
+}
+
+.client .client_avatar .client_base_info h5 {
+  font-size: 18px;
+}
+
+.client .client_avatar .client_base_info h5 span {
+  font-weight: 900;
+}
+
+.client .client_extended_info {
+  padding: 5px;
+}
+
+.client .client_extended_info h6 {
+  font-size: 18px;
+}
+
+.client .client_extended_info h6 span {
+  font-weight: 900;
+}
+
+.search_container {
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=style.css.map */

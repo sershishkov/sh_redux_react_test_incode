@@ -1,0 +1,69 @@
+.client_container{
+ 
+  .client_item{
+    margin-top: 2px;
+    display:flex;
+    border:1px solid grey;
+    .avatar{
+      padding:3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .info{
+      h5{
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.client{
+  position:fixed;
+  top:90px;
+  .client_avatar{
+    display:flex;
+    
+    .avatar_img{
+      img{
+        width:128px;
+        height: 128px;
+      }
+    }
+    .client_base_info{
+      padding-left:2px;
+      h1{
+        color: aqua;
+      }
+      h5{
+        font-size: 18px;
+        span{
+          font-weight: 900;
+        }
+      }
+    }
+
+  }
+  .client_extended_info{
+    padding:5px;
+    h6{
+      font-size: 18px;
+      span{
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.search_container{
+  
+  padding:5px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
