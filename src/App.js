@@ -12,7 +12,7 @@ import redusers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 const App = () => {
   return(
-    <Provider store={createStoreWithMiddleware(redusers)}>
+    <Provider store={createStoreWithMiddleware(redusers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
     
       <BrowserRouter>
           <Routes/>
