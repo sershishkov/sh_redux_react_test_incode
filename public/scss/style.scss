@@ -1,6 +1,10 @@
 .client_container{
+  
  
   .client_item{
+    & :hover{
+      cursor: pointer;
+    }
     margin-top: 2px;
     display:flex;
     border:1px solid grey;

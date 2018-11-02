@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+
+
+import { connect } from 'react-redux';
+import { clientsListAll, findClientsBy,findClientsDetails } from '../actions';
+import { bindActionCreators } from 'redux';
 
 import Search from './Search';
 import ClientList from './ClientList';
@@ -7,51 +12,18 @@ import Client from './Client';
 
 class Home extends Component { 
 
-    state = {
-        clients:[],
-        client:[{ "id":"Gerry_Hackett77@gmail.com",
-        "general": {
-          "firstName": "Liana",
-          "lastName": "Crooks",
-          "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
-        },
-        "job": {
-          "company": "Ledner, Johnson and Predovic",
-          "title": "Investor Functionality Coordinator"
-        },
-        "contact": {
-          "email": "Gerry_Hackett77@gmail.com",
-          "phone": "(895) 984-0132"
-        },
-        "address": {
-          "street": "1520 Zemlak Cove",
-          "city": "New Devon",
-          "zipCode": "42586-7898",
-          "country": "Guinea-Bissau"
-        }
-      }]
-    }
+    
 
     componentWillMount() {
-        axios.get("http://localhost:3004/clients")
-        .then(response =>{
-           this.setState({
-            clients:response.data
-           })
-        })
+        
+        this.props.clientsListAll();
+        this.props.findClientsDetails("Gerry_Hackett77@gmail.com");
     }
 
 
     getKeywords = (event) => {
-         let key = event.target.value;
-         axios.get(`http://localhost:3004/clients?q=${key}`)
-        .then(response =>{
-           this.setState({
-            clients:response.data
-           })
-        })
-
-        
+         let key = event.target.value;        
+        this.props.findClientsBy(key);        
     }
 
     clientOnClick = (event) =>{
@@ -59,19 +31,14 @@ class Home extends Component {
         while(target.className !== 'client_item'){            
             target = target.parentNode;
         } 
-        let id = target.getAttribute('id') ; 
-        
-        axios.get(`http://localhost:3004/clients?q=${id}`)
-        .then(response =>{
-           this.setState({
-            client:response.data
-           })
-        })
-         
+        let id = target.getAttribute('id') ;     
+
+        this.props.findClientsDetails(id);
         
     }
 
     render(){
+        
         return (
             <div className="container">
             <div className="row">
@@ -81,10 +48,10 @@ class Home extends Component {
             </div>
                 <div className="row">
                     <div className="col-4">
-                        <ClientList clients={this.state.clients} showClient = {this.clientOnClick}/>
+                        <ClientList clients={this.props.clients.clientstList} showClient = {this.clientOnClick}/>
                     </div>
                     <div className="col-8">
-                        <Client client={this.state.client}/>
+                        <Client client={this.props.client.clientDetail}/>
                     </div>                
                 </div>       
                 
@@ -94,4 +61,20 @@ class Home extends Component {
     
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => {
+    
+    return {
+        clients: state.clients,
+        client: state.client
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        clientsListAll, 
+        findClientsBy,
+        findClientsDetails
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Home);

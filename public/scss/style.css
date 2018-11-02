@@ -6,6 +6,10 @@
   border: 1px solid grey;
 }
 
+.client_container .client_item :hover {
+  cursor: pointer;
+}
+
 .client_container .client_item .avatar {
   padding: 3px;
   display: -webkit-box;
